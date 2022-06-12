@@ -6,10 +6,10 @@ namespace UnityDummy
 {
     public partial class Form1 : Form
     {
+        #region Pipe통신
         //파이프
         NamedPipeClientStream PipeClient = new NamedPipeClientStream(".", "UI to Unity", PipeDirection.Out, PipeOptions.None, TokenImpersonationLevel.Impersonation);
         NamedPipeServerStream PipeServer = new NamedPipeServerStream("Unity to UI", PipeDirection.In);
-
         String ReturnString
         {
             set
@@ -100,5 +100,6 @@ namespace UnityDummy
         {
             Task.Factory.StartNew(() => PipeSend());
         }
+        #endregion
     }
 }
